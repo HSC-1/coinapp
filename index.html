@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="test2.scss">
+
+</head>
+
+<body>
+    <script src="main.js"></script>
+    <table class="coin">
+        <thead>
+            <tr>
+                <th class="coin__head-col coin__head-col_name">Coin</th>
+                <th class="coin__head-col coin__head-col_price">Price</th>
+                <th class="coin__head-col coin__head-col_volume">Direct Vol. 24H</th>
+                <th class="coin__head-col coin__head-col_full-volume">Total Vol. 24H</th>
+                <th class="coin__head-col coin__head-col_market-cap">Market Cap</th>
+                <th class="coin__head-col coin__head-col_spark-chart">7d Chart (USD)</th>
+                <th class="coin__head-col coin__head-col_change">Chg. 24H</th>
+            </tr>
+        </thead>
+        <tbody id="coin">
+
+        </tbody>
+    </table>
+
+    <script id="js-template__coin" type="text/ejs">
+            <tr class="coin__row">
+                <td class="coin__col coin__col_name">
+                    <div class="coin__name"><%=coin_name%></div>
+                </td>
+                <td class="coin__col coin__col_price">
+                    <div class="coin__price coin__price_<%=class_price%>"><%=PRICE%></div>
+                </td>
+                <td class="coin__col coin__col_volume">
+                    <div class="coin__direct"><%=VOLUME24HOURTO%></div>
+                </td>
+                <td class="coin__col coin__col_full-volume">
+                    <div class="coin__total"><%=TOTALVOLUME24HTO%></div>
+                </td>
+                <td class="coin__col coin__col_market-cap">
+                    <div class="coin__mktcap coin__mktcap_<%=class_mktcap%>"><%=MKTCAP%></div>
+                </td>
+                <td class="coin__col coin__col_spark-chart">
+                    <img class="coin__graffic" src="<%=graffic%>" width="150" height="35" />
+                </td>
+                <td class="coin__col coin__col_change">
+                    <div class="coin__change coin__change_<%=class_change%>"><%=CHANGEPCT24HOUR%>%</div>
+                </td>
+            </tr>
+        </script>
+        
+</body>
+
+</html>

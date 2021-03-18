@@ -1,6 +1,7 @@
 import requests
 from statsmodels.tsa.arima_model import ARIMA
 import pandas as pd
+import numpy as np
 def Predict(coinname: str):
     url = "https://api.upbit.com/v1/candles/days"
     querystring = {"market":coinname,"count":"365","convertingPriceUnit":"KRW"}
@@ -22,5 +23,5 @@ def Predict(coinname: str):
     fc, se, conf = fitting.forecast(3, alpha=0.05)
     low = list(map(lambda x: conf[:][x][0],range(3)))
     up = list(map(lambda x: conf[:][x][1],range(3)))
-    predi = pd.DataFrame([low,fc,up],index=fu_list,columns=['prediction_low','prediction','prediction_high'])
+    predi = pd.DataFrame(np.array([low,fc,up]).T,index=fu_list,columns=['prediction_low','prediction','prediction_high'])
     return aa,predi

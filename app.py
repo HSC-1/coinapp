@@ -2,8 +2,8 @@ from flask import Flask, render_template, request
 import os
 from flask_cors import CORS
 from PIL import Image
-
-
+from predict import Predict
+import json
 app = Flask(__name__)
 # app.config.from_object('satcounter_config')
 CORS(app)
@@ -27,6 +27,39 @@ def image_change_bw(image):
 @app.route("/")
 def index():
     return render_template('image.html')
+@app.route('/data', methods=['POST'])
+
+@app.route("/api/search/<query>")
+def search_query(query=None):
+
+   try:
+      results,result2 = Predict(query)
+      df_to_dict = results.to_dict('r')
+      data = json.dumps(df_to_dict, ensure_ascii=False, indent=4)
+      return (
+         data
+      )
+
+   except Exception as e:
+      return (
+         f"{e}"
+
+   )
+@app.route("/api/search/predict/<query>")
+def search_querys(query=None):
+
+   try:
+      results,result2 = Predict(query)
+      df_to_dict2 = result2.to_dict('r')
+      data2 = json.dumps(df_to_dict2, ensure_ascii=False, indent=4)
+      return (
+         data2
+      )
+
+   except Exception as e:
+      return (
+         f"{e}"
+   )
 
 @app.route('/image_preprocess', methods=['POST'])
 def preprocessing():

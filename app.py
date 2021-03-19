@@ -34,11 +34,9 @@ def search_query(query=None):
 
    try:
       results,result2 = Predict(query)
-      df_to_dict = results.to_dict('r')
+      df_to_dict = results.to_json(orient='index')
       data = json.dumps(df_to_dict, ensure_ascii=False, indent=4)
-      return (
-         data
-      )
+      return data
 
    except Exception as e:
       return (
@@ -50,7 +48,7 @@ def search_querys(query=None):
 
    try:
       results,result2 = Predict(query)
-      df_to_dict2 = result2.to_dict('r')
+      df_to_dict2 = result2.to_json(orient='index')
       data2 = json.dumps(df_to_dict2, ensure_ascii=False, indent=4)
       return (
          data2

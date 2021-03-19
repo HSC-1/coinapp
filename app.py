@@ -34,7 +34,7 @@ def search_query(query=None):
 
    try:
       results,result2 = Predict(query)
-      df_to_dict = results.to_json(orient='cloumns')
+      df_to_dict = results.to_json(orient='coloumns')
       data = json.dumps(df_to_dict, ensure_ascii=False, indent=4)
       return data
 
@@ -48,7 +48,7 @@ def search_querys(query=None):
 
    try:
       results,result2 = Predict(query)
-      df_to_dict2 = result2.to_json(orient='cloumns')
+      df_to_dict2 = result2.to_json(orient='coloumns')
       data2 = json.dumps(df_to_dict2)
       return (
          data2

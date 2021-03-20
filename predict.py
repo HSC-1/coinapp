@@ -2,6 +2,7 @@ import requests
 from statsmodels.tsa.arima_model import ARIMA
 import pandas as pd
 import numpy as np
+from datetime import datetime, timedelta
 def Predict(coinname: str):
     url = "https://api.upbit.com/v1/candles/days"
     querystring = {"market":coinname,"count":"365","convertingPriceUnit":"KRW"}
@@ -12,11 +13,12 @@ def Predict(coinname: str):
     for i in range(date):
         c = response.json()[date-i-1]['trade_price']
         a.append(c)
-        c = response.json()[date-i-1]['candle_date_time_kst'].split("T")[0]
+        c = response.json()[date-i-1]['candle_date_time_kst']
+        c = datetime.fromisoformat(c)
         b.append(c)
     fu_list = []
     for i in range(3):
-        fu_list.append(c[:-2]+str(int(c[-2:])+i+1))
+        fu_list.append(c + timedelta(days=(i+1)))
     aa = pd.DataFrame(a,index=b,columns=['close'])
     model = ARIMA(a, order=(1,1,0))
     fitting = model.fit(disp=-1)

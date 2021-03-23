@@ -1,0 +1,103 @@
+<html>
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+    </head>
+
+    <body>
+
+        <fieldset>
+
+            <legend>
+
+                GET
+
+            </legend>
+
+            <form action="./example2.php" method="GET">
+
+                <p>
+
+                    닉네임 :
+
+                    <input type="text" name="nickname" />// 문자 정보 입력
+
+	        // <input type="button" name="nickname" />// 버튼 형식으로 입력
+
+                    <br />
+
+                </p>
+
+                <p>
+
+                    직업 :
+
+                    <select name="job">
+
+                        <option value="designer">디자이너</option>
+
+                        <option value="programmer">프로그래머</option>
+
+                        <option value="planner">기획자</option>
+
+                    </select>
+
+                </p>
+
+                <input type="submit" value="전송"/>// submit: 사용자가 클릭 form 내부(<form></form>)의 지금까지 입력한 정보를 action 속성의 URL로 전송
+
+            </form>
+
+        </fieldset>
+
+        <fieldset>
+
+            <legend>
+
+                POST
+
+            </legend>
+
+            <form action="./example2.php" method="POST">//'./':URL 전체 주소의 현재 폴더까지(상대경로)/example2.php
+
+                <p>
+
+                    닉네임 :
+
+                    <input type="text" name="nickname" />
+
+                    <br />
+
+                </p>
+
+                <p>
+
+                    직업 :
+
+                    <select name="job">
+
+                        <option value="designer">디자이너</option>
+
+                        <option value="programmer">프로그래머</option>
+
+                        <option value="planner">기획자</option>
+
+                    </select>
+
+                </p>
+
+                <input type="submit" value="전송"/>
+
+            </form>
+
+        </fieldset>
+
+    </body>
+
+</html>
+
+
+
+출처: https://devbox.tistory.com/entry/HTML5-a-태그 [장인개발자를 꿈꾸는 :: 기록하는 공간]

@@ -74,7 +74,7 @@ function anotation(){
       
       for (var key in test.close){data.addRow([new Date(key), parseFloat(test.close[key])])}
       
-  
+      
   var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'))
   var options= {
     displayAnnotations : true
